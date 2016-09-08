@@ -131,9 +131,7 @@
          <tr>
             <td colspan="2">	<input id="btnPost" type="button" value="提交员工信息" /></td>
         </tr>  
-        <tr>
- 			<td colspan="2">	<input id="btnLogin" type="button" value="CWF登录" /></td>
-        </tr>     
+      
          <tr>
  			<td colspan="2">	<input id="responseMsg"  /></td>
         </tr> 
