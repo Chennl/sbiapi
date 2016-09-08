@@ -126,7 +126,7 @@
         </tr>
         <tr>
             <td colspan="2"><input id="btnGet" type="button" value="获取员工信息" /></td>
-             
+      
         </tr>
          <tr>
             <td colspan="2">	<input id="btnPost" type="button" value="提交员工信息" /></td>

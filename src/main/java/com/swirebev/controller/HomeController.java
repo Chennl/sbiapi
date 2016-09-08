@@ -31,7 +31,7 @@ public class HomeController {
 	{
 		List<String> list= new ArrayList<String>();
 		list.add("星期一");
-		list.add("Tuesday");
+		list.add("星期二");
 		list.add("Wednesday");
 		list.add("Thursday");
 		list.add("Friday");
