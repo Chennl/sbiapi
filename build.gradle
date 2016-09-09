@@ -3,10 +3,9 @@ apply plugin: 'java'
 apply plugin: 'eclipse-wtp'
 apply plugin: 'war'
 
-
 	webAppDirName = 'WebContent'    // 璁剧疆 WebApp 鏍圭洰褰�
 	//version = '1.0'  
- 
+  
   	sourceCompatibility = 1.8 
   	targetCompatibility = 1.8 
   	
