@@ -148,7 +148,7 @@ public class HomeController {
 	{	
 	    if (errors.hasFieldErrors())  
 	    	   return "register";  
-	    return "submit";  
+	    return "rgisterSuccess";  
 	}
 	
  
