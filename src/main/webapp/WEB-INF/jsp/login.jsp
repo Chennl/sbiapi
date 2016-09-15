@@ -13,22 +13,29 @@
  </head>
 <body>
   Login
-  <form:form action="login.do" commandName="loginUser" method="POST">
+  <form action="./home/login"  method="POST">
     <table>
-        <tr>
-            <td>UserName:</td><td><form:input path="userName" /></td>
+	     <tr>
+	        <td>AppyKey:</td><td><input id="appkey" name="appkey" value="71267312"/></td>
         </tr>
         <tr>
-            <td>Password:</td><td><form:password path="password"/></td>
+            <td>UserName:</td><td><input id="username" name="username" value="chennl"/></td>
         </tr>
         <tr>
-            <td>RemenberMe:</td><td><form:checkbox path="remenberMe"/></td>
+            <td>Password:</td><td><input  type="password" id="password" name="password" value="abcdefg"/></td>
         </tr>
         <tr>
-            <td colspan="2"><input type="submit" value="提交"/></td>
+            <td>RememberMe:</td><td><input type="checkbox" id="rememberme" name="rememberme"/></td>
+        </tr>
+        <tr>
+            <td  ><input type="submit" value="登录"/></td>
+        
+            <td ><c:url value="/home/register" var="regUrl" ></c:url> <a href="${regUrl}">注册</a>  </td>
         </tr>
     </table>
-</form:form>
+  	</form>
+  	
+ 
  <script type="text/javascript">  
        $(function() {  
            $("#btnGet").click(function() {  
@@ -45,46 +52,21 @@
                       // $("#birthday").val(msg.birthday);
                    },
                    error:function(responseData){
-                	   consoleDebug("  in ajax, error: " + responseData.responseText); 
+                	   alert("in ajax, error: " + responseData.responseText); 
                    }
                
                });  
            }); 
  
-           $("#btnLogin").click(function() {         	   
-        	   //var jsonString ='{"id":"'+$("#id").val()+'","name":"'+$("#name").val()+'","sex":"'+$("#sex").val()+'" }';  
-        	   var jsonString ='{"employeeNo": "2101596", "password": "sw1234.", "deviceUUID": "2763521f-82b6-4d4b-893d-33542e5777c3", "appCode":"Portal", "version": "1.0.7", "build": 2806, "os": "iOS", "osVer":"8.12", "deviceBrand": "123", "deviceModel": "1324423", "deviceResolution": "7543"}';
-        	   //JSON.stringify(jsonString)
-               $.ajax( {  
-                   type : "POST",  
-                   url : "http://192.168.59.145:8080/SBI/v1/loginWithEmployeeNo",  
-                   //dataType: "json", 
-                   contentType:"application/json",
-                   data: jsonString,
-                   success : function(msg) {  
-                      objJson = $.parseJSON(msg);
-                      if(objJson.status==200)
-                    	  {
-                    	    var url='https://mcmocuat.swirebev.com:8000/CWF30/Loading.aspx?token='+objJson.authInfo.token+'&routeCode=0081&empCode=2101695&deviceUUID=&os=IOS&osVersion=6.1&requestDate=201608101109&processType=MOD&taskId=0021FD14-99E3-4A30-935D-569834910DA5&accessSource=SFA&outletNo=0514616109';
-                    	    window.location = url;
-                    	  }
-                      // alert(objJson.authInfo.token); 
-                      else
-                    	  alert(objJson.message);
-                   },
-                   error:function(responseMsg){
-                	   alert("  in ajax, error: " + responseMsg); 
-                   }             
-               });  
-           }); 
+      
            
            $("#btnPost").click(function() {  
-        	           	  
+        	    	  
         	   var jsonString ='{"id":'+$("#id").val()+',"name":"'+$("#name").val()+'","sex":"'+$("#sex").val()+'","remark":null}';
         	   //JSON.stringify(jsonString)
                $.ajax( {  
                    type : "POST",  
-                   url : "../api/employee/8002",  
+                   url : "../api/employee/8002?appkey=71267312&token=${token}",  
                    //dataType: "json", 
                    contentType:"application/json",
                    data: jsonString,
@@ -107,35 +89,6 @@
    </script>  
   
    
-  	<form>
-  	 <table>
-        <tr>
-            <td>Employee ID:</td><td><input id="id" name="id" value=2100968 /></td>
-        </tr>
-        <tr>
-            <td>Name:</td><td><input id="name" name="name"/></td>
-        </tr>
-        <tr>
-            <td>Password:</td><td><input  type="password" id="password" name="password"/></td>
-        </tr>
-        <tr>
-            <td>sex:</td><td><input id="sex"  name="sex"/></td>
-        </tr>
-         <tr>
-            <td>birthday:</td><td><input id="birthday"  name="birthday"/></td>
-        </tr>
-        <tr>
-            <td colspan="2"><input id="btnGet" type="button" value="获取员工信息" /></td>
-      
-        </tr>
-         <tr>
-            <td colspan="2">	<input id="btnPost" type="button" value="提交员工信息" /></td>
-        </tr>  
-      
-         <tr>
- 			<td colspan="2">	<input id="responseMsg"  /></td>
-        </tr> 
-    </table>
-  	</form>
+  	
 </body>
 </html>

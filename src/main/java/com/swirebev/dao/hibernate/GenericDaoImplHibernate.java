@@ -55,10 +55,10 @@ public class GenericDaoImplHibernate<T> extends HibernateGenericDao implements G
 		return getHibernateTemplate().loadAll(entityClass);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> find(String queryString) {
-		// TODO Auto-generated method stub
-		return null;
+		return (List<T>) getHibernateTemplate().find(queryString);
 	}
 
 	 

@@ -1,33 +1,37 @@
 package com.swirebev.pojo;
 
 import java.io.Serializable;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.GenericGenerator;
 
  
-
-
- 
-public class User implements Serializable {
-
-	/**
-	 * Data Model for Login Form
-	 */
-	private static final long serialVersionUID = 1L;
+@Entity
+@Table(name="dt_user")
+ public class User implements Serializable {
+	private static final long serialVersionUID = 570235488278506106L;
 	private long id;
     private String  userName;
-    private String name;
+    private String nickName;    
     private String  password;
-    private boolean  remenberMe;
-    private boolean isOnJob;
-	private long companyId;
-    private Integer sex;  
-    private String departmentId;
-    private String department;
-    private String grade;
-    private String remark;
-    private String[] hobbies;
+    private int status;
+    private long companyCode;
+    private String sex;  
+    private String remark; 
+    private Date createDate; 
     
-    
-
+	
+	@Id
+	@GeneratedValue(generator="increment")
+	@GenericGenerator(name="increment", strategy = "increment")
 	public long getId() {
 		return id;
 	}
@@ -40,41 +44,38 @@ public class User implements Serializable {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+	
+	@Column(name="realname",length=30,nullable=false)//字段名与属性不同时
+	public String getNickName() {
+		return nickName;
+	}
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
 	public String getPassword() {
 		return password;
 	}
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public boolean getRemenberMe() {
-		return remenberMe;
+	public long getCompanyCode() {
+		return companyCode;
 	}
-	public void setRemenberMe(boolean remenberMe) {
-		this.remenberMe = remenberMe;
+	public void setCompanyCode(long companyCode) {
+		this.companyCode = companyCode;
 	}
-    public long getCompanyId() {
-		return companyId;
+	public int getStatus() {
+		return status;
 	}
-	public void setCompanyId(long companyId) {
-		this.companyId = companyId;
+	public int setStatus(int status) {
+		return this.status=status;
 	}
-	public Integer getSex() {
+	
+	public String getSex() {
 		return sex;
 	}
-	public void setSex(Integer sex) {
+	public void setSex(String sex) {
 		this.sex = sex;
-	}
-	public String getDepartment() {
-		return department;
-	}
-	public void setDepartment(String department) {
-		this.department = department;
-	}
-	public String getGrade() {
-		return grade;
-	}
-	public void setGrade(String grade) {
-		this.grade = grade;
 	}
 	public String getRemark() {
 		return remark;
@@ -82,29 +83,23 @@ public class User implements Serializable {
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
-	public String getDepartmentId() {
-		return departmentId;
+	
+/*	Annotation：使用@Temporal(value=TemporalType)来注解表示日期和时间的注解
+
+    其中TemporalType有三个值：TemporalType.TIMESTAMP 表示yyyy-MM-dd HH:mm:ss
+
+                             TemporalType.DATE      表示yyyy-MM-dd
+
+                             TemporalType.TIME      表示HH:mm:ss*/
+
+                             
+	 @Temporal(value=TemporalType.TIMESTAMP)
+	public Date getCreateDate() {
+		return createDate;
 	}
-	public void setDepartmentId(String departmentId) {
-		this.departmentId = departmentId;
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
 	}
-	public String[] getHobbies() {
-		return hobbies;
-	}
-	public void setHobbies(String[] hobbies) {
-		this.hobbies = hobbies;
-	}
-	public boolean isOnJob() {
-		return isOnJob;
-	}
-	public void setOnJob(boolean isOnJob) {
-		this.isOnJob = isOnJob;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
+	    	
 
 }

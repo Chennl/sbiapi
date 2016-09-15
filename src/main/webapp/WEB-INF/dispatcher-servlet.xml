@@ -20,6 +20,25 @@
              <mvc:default-servlet-handler />       
         	 <mvc:resources mapping="/resources/**" location="/resources/" />
         	
+        	<!-- Interceptors -->
+			<mvc:interceptors>
+				<!-- 使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求 -->
+				<!-- <bean id="checkingAccessToken" class="com.swirebev.inteceptor.AccessTokenCheckingInterceptor"></bean> -->
+				<mvc:interceptor>
+				<mvc:mapping path="/api/**"/>
+					 <bean class="com.swirebev.inteceptor.ApiSecurityInterceptor"></bean>
+				</mvc:interceptor>
+				<mvc:interceptor>
+				<mvc:mapping path="/**"/>
+				 <mvc:exclude-mapping path="/api/**"/> 
+				 <mvc:exclude-mapping path="/home/login"/>  
+				 <mvc:exclude-mapping path="/home/register"/>
+				 <bean class="com.swirebev.inteceptor.WebSecurityInterceptor"></bean>
+				</mvc:interceptor>
+
+	 
+			</mvc:interceptors>
+	
              <!-- configure the InternalResourceViewResolver -->    
              <bean  id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
 				<!-- 前缀 -->        
@@ -27,7 +46,7 @@
 				<!-- 后缀 -->        
 				<property name="suffix" value=".jsp" />     
 			</bean> 
-		
+			 
  
  	<bean id="jacksonMessageConverter"
     	class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>

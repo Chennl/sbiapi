@@ -47,10 +47,9 @@
   <br>
   <c:out value="${msg}"></c:out><br>
   
-  <c:url value="/home/login" var="url" scope="session">  
-  </c:url>  
-  <c:url value="/home/register" var="regUrl" scope="session" ></c:url>
-  <a href="${url}">登录</a> <br><a href="${regUrl}">注册</a> 
+  
+  <c:url value="/home/logout" var="regUrl" scope="session" ></c:url>
+ <a href="${regUrl}">注销</a> 
   
   
 

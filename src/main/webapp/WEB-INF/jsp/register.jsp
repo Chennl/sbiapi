@@ -14,44 +14,31 @@
  <form:form action="register" commandName="user" method="POST">
     <table>
         <tr>
-            <td>Name:</td><td><form:input path="name"/></td>
+            <td>Name:</td><td><form:input path="nickName"/></td>
         </tr>
          <tr>
             <td>UserName:</td><td><form:input path="userName"/></td>
         </tr>
+         <tr>
+          <td>性别:</td><td>
+           <form:select  path="sex">
+            <option>请选择</option>
+            <form:options items="${sexs}"/> 
+           </form:select>
+          </td>
+        </tr>
         <tr>
-            <td>Sex:</td><td>
-				<form:radiobutton path="sex" value="1"/>男
-        		<form:radiobutton path="sex" value=""/>女</td>
+            <td>状态:</td><td>
+				<form:radiobutton path="status" value="1"/>正常
+        		<form:radiobutton path="status" value="0"/>禁止</td>
         </tr>
         <tr>
             <td>Password:</td><td><form:password path="password"/></td>
         </tr>
         <tr>
-            <td>company:</td><td><form:select  path="companyId" items="${companies}"/></td>
+            <td>company:</td><td><form:select  path="companyCode" items="${companies}"/></td>
         </tr>
-         <tr>
-            <td>department:</td><td>
-	            <form:select  path="departmentId">
-	             <option>请选择</option>
-	             <form:options items="${departments}"/> 
-	            </form:select>
-            </td>
-        </tr>
-        
-  
-        
-        <tr>
-            <td>Hobbies:</td><td>
-            	<form:checkbox path="hobbies" value="旅游"/>旅游
-		        <form:checkbox path="hobbies" value="阅读"/>阅读
-		        <form:checkbox path="hobbies" value="运动"/>运动
-		        <form:checkbox path="hobbies" value="音乐"/>音乐<br/>
-			</td>
-        </tr>
-        <tr>
-            <td>OnJob:</td><td><form:checkbox   path="onJob"  /></td>
-        </tr>
+
         <tr>
             <td>remark:</td><td><form:textarea   path="remark"  /></td>
         </tr>
@@ -60,8 +47,8 @@
             <td><form:errors path="*"/></td>
         </tr>
         <tr>
-            <td>Name的错误信息:</td>
-            <td><form:errors path="name"/></td>
+            <td>UserName的错误信息:</td>
+            <td><form:errors path="userName"/></td>
         </tr>
         <tr>
             <td colspan="2"><input type="submit" value="提交"/></td>

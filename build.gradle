@@ -73,6 +73,9 @@ dependencies {
 	// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
 	compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.1'
 	
+	// https://mvnrepository.com/artifact/org.apache.directory.studio/org.apache.commons.codec
+	compile group: 'org.apache.directory.studio', name: 'org.apache.commons.codec', version: '1.8'
+	
      
 }
 
