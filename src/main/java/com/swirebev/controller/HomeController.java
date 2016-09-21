@@ -3,6 +3,8 @@ package com.swirebev.controller;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -32,11 +34,17 @@ import com.swirebev.utils.TokenUtils;
 import com.swirebev.validate.UserValidator;
 import com.swirebev.utils.Constants;
 
+
+import com.swirebev.pojo.Node;
+import com.swirebev.pojo.TestClass;
+
 @Controller
 @RequestMapping("/home")
 public class HomeController {
 	private static final Logger log = LoggerFactory.getLogger(HomeController.class);
 
+	 @Autowired 
+	 private TestClass testClass; 
 	 @Autowired
 	 private IBaseUserService baseUserService;
 	@RequestMapping(value={"/","/index"})//, params="demo")
@@ -134,10 +142,71 @@ public class HomeController {
 		user.setSex("男");
 		user.setCompanyCode(3006);
 		user.setRemark("新员工入职ְ"); 
-		model.addAttribute("user", user);		
+		model.addAttribute("user", user);	
+		
+ /*
+		  LinkedList<String> list = new LinkedList<String>();  
+		  for(int i=1;i<2018;i++)
+			  list.add(""+i);			
+		  log.debug(list.toString());
+		  log.debug(list.size()+" first:"+list.getFirst()+"  last:"+list.getLast());
+			 
+		  delEven(list);
+		  delOdd(list);
+		  delEven(list);
+		  delEven(list);
+		  delEven(list);
+		  delEven(list);
+		  delOdd(list);
+		  log.debug(list.toString());
+		  log.debug(list.size()+" first:"+list.getFirst()+"  last:"+list.getLast());
+		  delOdd(list);
+		  delOdd(list);
+		  delOdd(list);
+		  delOdd(list);
+		  delOdd(list);
+		 
+		  Node head=null;
+		  Node tail=null;
+		  
+		  for(int i=1;i<2018;i++){
+			  Node n= new Node(1,null);
+			  if(head==null) head=n;
+			  tail=n;
+		  }
+		  tail.next=head;		  
+		  Node cur= tail;
+		  Node n=cur.next;
+		  Node nn= cur.next.next ;
+		  n.next=nn.next;
+		 		
+		  */
+		  testClass.Log();
+	 
+		
 		return "register";
 	}
-	
+/*	private LinkedList<String>  delEven(LinkedList<String> list){
+				
+		  int index=0;
+		  for(Iterator<String> it=list.iterator(); it.hasNext();)
+		  {   
+			  it.next();
+			  index++;
+			  if(index%2==0) it.remove();
+		  }
+		  return list;
+	}
+	private LinkedList<String>  delOdd(LinkedList<String> list){	
+		  int index=0;
+		  for(Iterator<String> it=list.iterator(); it.hasNext();)
+		  {    String str = it.next();
+			  index++;
+			  if(index%2==1) it.remove();
+		  }
+		  return list;
+	}
+	*/
 	@InitBinder  
 	 public void initBinder(DataBinder binder) {  
 	  binder.setValidator(new UserValidator());  
@@ -149,6 +218,13 @@ public class HomeController {
 	    if (errors.hasFieldErrors())  
 	    	   return "register";  
 	    return "rgisterSuccess";  
+	}
+	
+	@RequestMapping(value="/math")
+	public String  math(Model model)
+	{
+		return "";
+		
 	}
 	
  

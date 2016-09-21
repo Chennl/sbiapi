@@ -53,5 +53,9 @@
 	</bean> 
 
 	<tx:annotation-driven transaction-manager="transactionManager"  />
+	
+	
+	<bean id="testClass" class="com.swirebev.pojo.TestClass"> 
+	<property name="myProperties" value="Hello" /></bean>
 
 </beans>
